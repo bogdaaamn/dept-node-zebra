@@ -1,10 +1,10 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-
-import { getCollection, CollectionEntry } from "astro:content";
 import IssuesList from "~/components/IssuesList.astro";
 
-interface Props {
+import { getCollection, CollectionEntry } from "astro:content";
+
+export interface Props {
   entry: CollectionEntry<"newsletter">;
 }
 
@@ -29,7 +29,7 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={`${entry.data.title} – Node Weekly `}>
   <h1>{entry.data.title}: {entry.data.date}</h1>
 
   <Content />

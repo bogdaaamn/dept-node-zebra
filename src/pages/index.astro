@@ -1,13 +1,13 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import IssuesList from "~/components/IssuesList.astro";
 
 import { getCollection } from "astro:content";
-import IssuesList from "~/components/IssuesList.astro";
 
 const newsletterIssues = await getCollection("newsletter");
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Node Zebra Weekly Issues">
   <main>
     <h1 class="">Node Zebra Weekly Issues</h1>
     <IssuesList issues={newsletterIssues} />
