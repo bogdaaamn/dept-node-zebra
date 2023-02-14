@@ -1,0 +1,28 @@
+---
+import Layout from "~/layouts/Layout.astro";
+
+import { getCollection, CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"newsletter">;
+}
+
+// Generate paths for all the issues in the newsletter collection
+export async function getStaticPaths() {
+  const newsletterIssues = await getCollection("newsletter");
+
+  return newsletterIssues.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Render the markdown content
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <h1>{entry.data.title}: {entry.data.date}</h1>
+  <Content />
+</Layout>
