@@ -2,6 +2,7 @@
 import Layout from "~/layouts/Layout.astro";
 
 import { getCollection } from "astro:content";
+import IssuesList from "~/components/IssuesList.astro";
 
 const newsletterIssues = await getCollection("newsletter");
 ---
@@ -9,16 +10,6 @@ const newsletterIssues = await getCollection("newsletter");
 <Layout title="Welcome to Astro.">
   <main>
     <h1 class="">Node Zebra Weekly Issues</h1>
-
-    <ul>
-      {
-        newsletterIssues.map((issue) => (
-          <li>
-            <a href={`/newsletter/${issue.slug}`}>{issue.data.title}</a>:{" "}
-            {issue.data.date}
-          </li>
-        ))
-      }
-    </ul>
+    <IssuesList issues={newsletterIssues} />
   </main>
 </Layout>

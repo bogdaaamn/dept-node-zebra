@@ -2,6 +2,7 @@
 import Layout from "~/layouts/Layout.astro";
 
 import { getCollection, CollectionEntry } from "astro:content";
+import IssuesList from "~/components/IssuesList.astro";
 
 interface Props {
   entry: CollectionEntry<"newsletter">;
@@ -17,6 +18,12 @@ export async function getStaticPaths() {
   }));
 }
 
+// Get the last three issues, excluding the current issue
+const newsletterIssues = await getCollection("newsletter");
+const lastIssues = newsletterIssues
+  .slice(0, 3)
+  .filter((entry) => entry.slug !== Astro.props.entry.slug);
+
 // Render the markdown content
 const { entry } = Astro.props;
 const { Content } = await entry.render();
@@ -24,5 +31,9 @@ const { Content } = await entry.render();
 
 <Layout title={entry.data.title}>
   <h1>{entry.data.title}: {entry.data.date}</h1>
+
   <Content />
+
+  <h2>Read more</h2>
+  <IssuesList issues={lastIssues} />
 </Layout>
