@@ -1,6 +1,6 @@
 ---
 title: "Issue #06"
-date: "March 2"
+date: "March 02"
 ---
 
 ## Node weekly
