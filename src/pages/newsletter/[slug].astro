@@ -2,30 +2,33 @@
 import Layout from "~/layouts/Layout.astro";
 import IssuesList from "~/components/IssuesList.astro";
 
-import { getCollection, CollectionEntry } from "astro:content";
+import { getCollection, getEntryBySlug } from "astro:content";
 
 export interface Props {
-  entry: CollectionEntry<"newsletter">;
+  slug: string;
 }
 
-// Generate paths for all the issues in the newsletter collection
-export async function getStaticPaths() {
-  const newsletterIssues = await getCollection("newsletter");
+// Get slug from the URL params, if not redirect to 404
+const { slug } = Astro.params;
 
-  return newsletterIssues.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+if (slug === undefined) {
+  return Astro.redirect("/404");
+}
+
+// Get the newsletter issue by slug, if not redirect to 404
+const entry = await getEntryBySlug("newsletter", slug);
+
+if (entry === undefined) {
+  return Astro.redirect("/404");
 }
 
 // Get the last three issues, excluding the current issue
 const newsletterIssues = await getCollection("newsletter");
 const lastIssues = newsletterIssues
-  .filter((entry) => entry.slug !== Astro.props.entry.slug)
+  .filter((entry) => entry.slug !== slug)
   .slice(-3);
 
 // Render the markdown content
-const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
