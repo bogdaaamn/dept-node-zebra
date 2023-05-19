@@ -8,6 +8,8 @@ export interface Props {
   entry: CollectionEntry<"newsletter">;
 }
 
+export const prerender = true;
+
 // Generate paths for all the issues in the newsletter collection
 export async function getStaticPaths() {
   const newsletterIssues = await getCollection("newsletter");
