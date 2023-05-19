@@ -6,6 +6,7 @@ import vercelEdge from "@astrojs/vercel/edge";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://dept-node-zebra.vercel.app",
   integrations: [tailwind()],
   adapter: vercelEdge(),
   output: "hybrid",
