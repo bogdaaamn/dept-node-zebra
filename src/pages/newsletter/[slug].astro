@@ -4,11 +4,11 @@ import IssuesList from "~/components/IssuesList.astro";
 
 import { getCollection, CollectionEntry } from "astro:content";
 
+export const prerender = true;
+
 export interface Props {
   entry: CollectionEntry<"newsletter">;
 }
-
-export const prerender = true;
 
 // Generate paths for all the issues in the newsletter collection
 export async function getStaticPaths() {
