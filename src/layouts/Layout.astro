@@ -2,10 +2,19 @@
 import DeptLogo from "~/components/DeptLogo.astro";
 
 export interface Props {
-  title: string;
+  slug?: string;
+  title?: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { slug, title, description } = Astro.props;
+
+const urlTag = Astro.url;
+const slugTag = slug ?? "index";
+const titleTag = title ?? "Node Zebra Weekly Issues";
+const descriptionTag =
+  description ??
+  "Node Weekly is our friendly newsletter with relevant tech articles and tools";
 ---
 
 <!DOCTYPE html>
@@ -13,16 +22,29 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon.ico" />
+
     <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Node Weekly is our friendly newsletter with relevant tech articles and tools."
-    />
-    <title>{title}</title>
-    <!-- og image -->
-    <meta property="og:image" content="/newsletter/issue-12.svg" />
+
+    <link rel="icon" href="/favicon.ico" />
+
+    <title>{titleTag}</title>
+    <meta name="description" content={descriptionTag} />
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content={urlTag} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={titleTag} />
+    <meta property="og:description" content={descriptionTag} />
+    <meta property="og:image" content=`/newsletter/${slugTag}.svg` />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={urlTag} />
+    <meta name="twitter:title" content={titleTag} />
+    <meta name="twitter:description" content={descriptionTag} />
+    <meta name="twitter:image" content=`/newsletter/${slugTag}.svg` />
   </head>
+
   <body class="mx-auto max-w-7xl py-8 px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-2xl font-light text-2xl leading-normal">
       <nav class="flex justify-between items-center mb-8">
@@ -31,6 +53,8 @@ const { title } = Astro.props;
       </nav>
       <slot />
     </div>
+
+    <script defer src="/_vercel/insights/script.js"></script>
   </body>
 
   <style is:global>

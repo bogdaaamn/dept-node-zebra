@@ -31,7 +31,7 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={`${entry.data.title} – Node Weekly `}>
+<Layout title={`${entry.data.title} – Node Weekly `} slug={entry.slug}>
   <h1>{entry.data.title}: {entry.data.date}</h1>
 
   <Content />
