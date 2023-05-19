@@ -21,7 +21,7 @@ export const get: APIRoute = async function ({ params }) {
 
   const svg = await satori(markup, {
     width: 1200,
-    height: 768,
+    height: 630,
     fonts: [
       {
         name: "Inter",
