@@ -4,8 +4,6 @@ import IssuesList from "~/components/IssuesList.astro";
 
 import { getCollection, CollectionEntry } from "astro:content";
 
-export const prerender = true;
-
 export interface Props {
   entry: CollectionEntry<"newsletter">;
 }
