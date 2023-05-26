@@ -1,6 +1,7 @@
 ---
 title: "Issue #01"
 date: "January 26"
+tagline: "The one about JavaScript performance, friendly documentation, and git security"
 ---
 
 ## Node weekly

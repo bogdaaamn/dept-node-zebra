@@ -1,6 +1,7 @@
 ---
 title: "Issue #07"
 date: "March 09"
+tagline: "The one about web longevity, reverse shell attacks, and code extraction"
 ---
 
 ## Node weekly

@@ -1,6 +1,7 @@
 ---
 title: "Issue #05"
 date: "February 23"
+tagline: "The one about AI"
 ---
 
 ## Node weekly

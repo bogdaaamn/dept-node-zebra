@@ -1,6 +1,7 @@
 ---
 title: "Issue #09"
 date: "April 06"
+tagline: "The one about microservices, fake GitHub stars, and Vite"
 ---
 
 ## Node weekly

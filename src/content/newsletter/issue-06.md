@@ -1,6 +1,7 @@
 ---
 title: "Issue #06"
 date: "March 02"
+tagline: "The one about WebContainer API, cloud adoption, and JavaScript generators"
 ---
 
 ## Node weekly

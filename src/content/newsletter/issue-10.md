@@ -1,6 +1,7 @@
 ---
 title: "Issue #10"
 date: "April 20"
+tagline: "The one about JavaScript security, WebGPU, and recommenders systems"
 ---
 
 ## Node weekly

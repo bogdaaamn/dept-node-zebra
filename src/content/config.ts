@@ -4,6 +4,7 @@ const newsletterCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string(),
+    tagline: z.string(),
   }),
 });
 

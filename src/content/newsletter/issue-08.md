@@ -1,6 +1,7 @@
 ---
 title: "Issue #08"
 date: "March 23"
+tagline: "The one about Discord storing trillions of messages"
 ---
 
 ## Node weekly

@@ -1,6 +1,7 @@
 ---
 title: "Issue #12"
 date: "May 25"
+tagline: "The only one with Rust"
 ---
 
 ## Node weekly

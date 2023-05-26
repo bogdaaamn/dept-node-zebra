@@ -1,6 +1,7 @@
 ---
 title: "Issue #03"
 date: "February 09"
+tagline: "The one about TypeScript, compilation times, and developer experience"
 ---
 
 ## Node weekly

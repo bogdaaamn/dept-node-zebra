@@ -1,6 +1,7 @@
 ---
 title: "Issue #02"
 date: "February 02"
+tagline: "The one about inclusive developer communities, documentation mistakes, and TypeScript data manipulation"
 ---
 
 ## Node weekly
