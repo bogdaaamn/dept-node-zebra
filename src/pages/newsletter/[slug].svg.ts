@@ -60,13 +60,16 @@ export const get: APIRoute = async function ({ params }) {
   const fontThinData = await fontThin.arrayBuffer();
 
   // Get the newsletter data from the collection
-  const data = await getEntry("newsletter", slug);
+  const entry = await getEntry("newsletter", slug);
 
   // Generate the SVG on the fly
   const markup = getSatoriMarkup({
-    title: "Node Zebra Newsletter",
-    description:
-      "Our friendly newsletter with edgy tech news, articles, and tools",
+    title: entry?.data
+      ? `Node Zebra Newsletter ${entry.data.title.replace("Issue", "")}`
+      : "Node Zebra Newsletter",
+    description: entry?.data
+      ? entry.data.tagline
+      : "Our friendly newsletter with edgy tech news, articles, and tools",
   });
 
   const svg = await satori(markup, {
