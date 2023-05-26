@@ -1,38 +1,35 @@
 import satori from "satori";
+
 import { html } from "satori-html";
+import { getEntry } from "astro:content";
 
 import type { APIRoute } from "astro";
 
 export const prerender = false;
 
-const FONT_URL_BOLD = "https://fonts.cdnfonts.com/s/19795/Inter-Bold.woff";
-const FONT_URL_THIN =
-  "https://fonts.cdnfonts.com/s/19795/Inter-ExtraLight-BETA.woff";
+const FONT_URL_BOLD = "https://fonts.cdnfonts.com/s/29652/MaisonNeueBold.woff";
+const FONT_URL_THIN = "https://fonts.cdnfonts.com/s/29652/MaisonNeueThin.woff";
 
-export const get: APIRoute = async function ({ params }) {
-  const slug = params.slug;
-
-  const fontBold = await fetch(FONT_URL_BOLD);
-  const fontBoldData = await fontBold.arrayBuffer();
-
-  const fontThin = await fetch(FONT_URL_THIN);
-  const fontThinData = await fontThin.arrayBuffer();
-
-  // Vercel OG Playground JSX https://og-playground.vercel.app/?share=tVbLbttGFP2VAYvuzDHnPVSdLOoWcBfJJoYDGNpQ1EhkyodAUpJdw__ec0m9HDdAN9mId-7znDt3ZvQS5e0yRLPoZlnu5g1j_fBchQ8vLyQzVoRyXQwzNo9Ekvw6j64m9b5cDsU77SZbLstmTXpz1i7LflNlz6RdVeHppKfFH2UX8qFsG7J27f5kzKpy3fw1hLonSx6aIXQn47dtP5Sr59sW2mYE12-yPMSLMOxDaE5-iyz_e92122Z521ZtR46_rFarg_31dd58JOHI_HvuP4b-H-DzttrW59KUnLEx_WWB9yWQCjS-lP-EGZPylJ-xKgzg_AXExpaKCxNFfD1sjE2SC8sQnob7Lmv6VdvVBGu72YQuz_pwgX3CdkLH2GdMAHsMiy5jn8O-nyofoF8DOxz_D5E669Zlc99uwOQS1Jmg8j9gId-wqLOnr9OAuQv9O9j3RWBtEzCMQ8EWVXb4wU6HmpWbflsfPZ-zZTb9fO8xai_dRoceQs9WWXjbhLft-Plj0-_Wx8Cnumr6D_OoGIbN7Pp6v9_zveJtt75G65Jr8oyOvuPhhK_Q9qycDjK0Ojkrd2XY_94-QZuwhDmBfTgaT12-2WRDcd6bJZw_Cc-1ZSl36e0kau6lYsJw5y0TzPPUeSbuBLdpuhOOG6cLx6XzueU-8SiWcu11rBCnD7JHsHmsY81TI1mSJ0whtY8FTxUKOONgsgkVg3xnuZZ2F6fcyEJy7WwuuXUWqScvweUYd4iw8rG2PPES4JzXhVCk28X6Tmqu5IMQ3FhgTNWDI0sRj7LhSaILD9DmAXxQLX38pFOurGKOi8TkCVBppWLJfWxJg0Bh5CRTFiPdsQXAQZgNwh1A-xyliSulMgpMrZMHmcIBGcl9in6hGwLBMfcMZKmak24U7xTaJx5A1FEjlPQ5OiapEaMTp209eavH2sDdI0GSqAKyszv0QiOY0DkwRmEyeBAGU-8RQ90SKUOTEiFGLAYrbKhCVk-YvJ4kWJwea3uTgpFMD-JoTaCZ1N6QZlTbSaINAGpaaKQZOzomTR9rbjBkaAKclJCwJlLDrjBtkvb5IBOiqbhKCF-C1SRPdgKuBDU6UYZ0jlAc7JApfkRAKeFk5UEezYCRWoEUGLwCsNJdzFNfcCNkxY0y4yJ1soq51TS3wuaIdjEX0mAMVIx5PgheUzO4tRpKaSiRpgiNNcSCZkGDuKD-0xFIJdrOpfLIpj1XFKcUvkXMjRGAYhWgGFQcicKqwR_7iK9EJpzw88HHTVRWFY5yvu06vKHj-3g2f7y5plN_vIfoenlz_U3f3-ZNdBW1G7rL-mj2Eo0XTzQTdJtH04UTzazCYhkW23U0W2VVH66iULffyvvnDf3twItNKySi9-DPehGW0WzotuH1KhqyBTyKUFXtvu2qZfT6Lw
-  const markup = html`<div
-    style="height: 100%; width: 100%; padding: 5%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: rgb(255, 255, 255);"
+function getSatoriMarkup({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
+  return html` <div
+    style="height: 100%; width: 100%; padding: 7%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: rgb(255, 255, 255); background-image: radial-gradient(circle at 10px 10px, lightgray 3%, transparent 0%), radial-gradient(circle at 30px 30px, lightgray 3%, transparent 0%); background-size: 40px 40px;"
   >
     <div style="display: flex; flex-direction: column;">
       <div
         style="font-size: 22px; letter-spacing: 1px; font-weight: 700; text-transform: uppercase;"
       >
-        Node Zebra Newsletter
+        ${title}
       </div>
       <div
         style="margin-top: 20px; font-size: 38px; font-weight: 200; max-width: 700px;"
       >
-        The one with blah blah lorem ipsum yada yada blah lorem ipsum yada
-        yadablah sadas fae
+        ${description}
       </div>
     </div>
     <div style="display: flex; flex-direction: column;">
@@ -49,6 +46,28 @@ export const get: APIRoute = async function ({ params }) {
       </svg>
     </div>
   </div>`;
+}
+
+export const get: APIRoute = async function ({ params }) {
+  // Get params and props
+  const slug = params.slug ?? "index";
+
+  // Get font buffer data for satori
+  const fontBold = await fetch(FONT_URL_BOLD);
+  const fontBoldData = await fontBold.arrayBuffer();
+
+  const fontThin = await fetch(FONT_URL_THIN);
+  const fontThinData = await fontThin.arrayBuffer();
+
+  // Get the newsletter data from the collection
+  const data = await getEntry("newsletter", slug);
+
+  // Generate the SVG on the fly
+  const markup = getSatoriMarkup({
+    title: "Node Zebra Newsletter",
+    description:
+      "Our friendly newsletter with edgy tech news, articles, and tools",
+  });
 
   const svg = await satori(markup, {
     width: 1200,
