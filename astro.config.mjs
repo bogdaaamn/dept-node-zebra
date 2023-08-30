@@ -1,16 +1,14 @@
 import { defineConfig } from "astro/config";
 
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
-import vercelEdge from "@astrojs/vercel/edge";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://dept-node-zebra.vercel.app",
   integrations: [tailwind()],
-  adapter: vercelEdge(),
+  adapter: vercel({
+    analytics: true,
+  }),
   output: "hybrid",
-  experimental: {
-    hybridOutput: true,
-  },
 });
