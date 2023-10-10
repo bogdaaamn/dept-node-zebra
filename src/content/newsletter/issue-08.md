@@ -1,7 +1,8 @@
 ---
 title: "Issue #08"
-date: "March 23"
 tagline: "The one about Discord storing trillions of messages"
+date: "2023-03-23"
+length: 2
 ---
 
 ## Node weekly

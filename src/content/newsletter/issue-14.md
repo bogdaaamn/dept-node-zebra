@@ -1,7 +1,8 @@
 ---
 title: "Issue #14"
-date: "July 27"
 tagline: "The one about the JS ecosystem, Postman, and ChatGPT"
+date: "2023-07-27"
+length: 2
 ---
 
 ## Node weekly

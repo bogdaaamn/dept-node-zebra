@@ -1,7 +1,8 @@
 ---
 title: "Issue #05"
-date: "February 23"
 tagline: "The one about AI"
+date: "2023-02-23"
+length: 2
 ---
 
 ## Node weekly

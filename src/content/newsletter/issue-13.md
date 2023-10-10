@@ -1,7 +1,8 @@
 ---
 title: "Issue #13"
-date: "June 15"
 tagline: "The one about promises, vector databases, and Reddit"
+date: "2023-06-15"
+length: 2
 ---
 
 ## Node weekly
