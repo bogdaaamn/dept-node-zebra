@@ -2,8 +2,16 @@ import { getCollection } from "astro:content";
 
 // Inspo https://jeroenvanwissen.nl/blog/generate-a-simple-sitemapxml-on-your-astrobuild-website
 async function generateSitemapXml() {
+  const allIssues = await getCollection("newsletter");
+
+  const issues = allIssues.sort((a, b) => {
+    const dateA = new Date(a.data.date);
+    const dateB = new Date(b.data.date);
+
+    return dateB.getTime() - dateA.getTime();
+  });
+
   const site = import.meta.env.SITE;
-  const issues = (await getCollection("newsletter")).reverse();
 
   return `
     <?xml version="1.0" encoding="UTF-8"?>
