@@ -1,0 +1,20 @@
+---
+import gradient from "@privjs/gradients";
+
+export interface Props {
+  title: string;
+  variant?: "sm" | "lg";
+}
+
+const { title, variant = "lg" } = Astro.props;
+---
+
+<div class:list={["flex", variant == "sm" ? "gap-14" : "gap-14 md:gap-24"]}>
+  <div class="w-40 h-40 shrink-0 relative hidden sm:block">
+    <div class="bg-default-noise w-full h-full absolute"></div>
+    <div style={{ background: gradient(title) }} class="w-full h-full"></div>
+  </div>
+  <div class="sm:border-b flex flex-col justify-center grow">
+    <slot />
+  </div>
+</div>
