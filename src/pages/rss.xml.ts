@@ -6,7 +6,15 @@ import MarkdownIt from "markdown-it";
 import { getCollection } from "astro:content";
 
 export async function GET() {
-  const issues = (await getCollection("newsletter")).reverse();
+  const allIssues = await getCollection("newsletter");
+
+  const issues = allIssues.sort((a, b) => {
+    const dateA = new Date(a.data.date);
+    const dateB = new Date(b.data.date);
+
+    return dateB.getTime() - dateA.getTime();
+  });
+
   const site = import.meta.env.SITE;
 
   const mdParser = new MarkdownIt();
