@@ -1,7 +1,8 @@
 ---
 title: "Issue #06"
-date: "March 02"
 tagline: "The one about WebContainer API, cloud adoption, and JavaScript generators"
+date: "2023-03-02"
+length: 2
 ---
 
 ## Node weekly

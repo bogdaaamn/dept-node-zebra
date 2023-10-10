@@ -1,7 +1,8 @@
 ---
 title: "Issue #11"
-date: "May 09"
 tagline: "The one about runtime validation, NPM malware, and incremental automation"
+date: "2023-05-09"
+length: 2
 ---
 
 ## Node weekly

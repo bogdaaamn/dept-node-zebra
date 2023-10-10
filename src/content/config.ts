@@ -5,6 +5,7 @@ const newsletterCollection = defineCollection({
     title: z.string(),
     date: z.string(),
     tagline: z.string(),
+    length: z.number(),
   }),
 });
 

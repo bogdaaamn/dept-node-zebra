@@ -1,7 +1,8 @@
 ---
 title: "Issue #01"
-date: "January 26"
 tagline: "The one about JavaScript performance, friendly documentation, and git security"
+date: "2023-01-26"
+length: 2
 ---
 
 ## Node weekly

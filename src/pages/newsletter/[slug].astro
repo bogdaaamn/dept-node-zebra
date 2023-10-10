@@ -1,39 +1,88 @@
 ---
-import Layout from "~/layouts/Layout.astro";
-import IssuesList from "~/components/IssuesList.astro";
+import Header from "~/components/Header.astro";
+import BasePage from "~/layouts/BasePage.astro";
 
-import { getCollection, CollectionEntry } from "astro:content";
+import IssueList from "~/components/IssueList/IssueList.astro";
+import IssueCard from "~/components/IssueList/IssueCard.astro";
+import IssueEyebrow from "~/components/IssueList/IssueEyebrow.astro";
+import IssueTitle from "~/components/IssueList/IssueTitle.astro";
 
-export interface Props {
-  entry: CollectionEntry<"newsletter">;
+import formatDate from "~/utils/formatDate";
+
+import { getCollection, getEntry } from "astro:content";
+
+// Get slug from path
+const { slug } = Astro.params;
+
+if (!slug) {
+  throw new Error("Slug is required");
 }
 
-// Generate paths for all the issues in the newsletter collection
-export async function getStaticPaths() {
-  const newsletterIssues = await getCollection("newsletter");
+// Get entry from collection
+const entry = await getEntry("newsletter", slug);
 
-  return newsletterIssues.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+if (!entry) {
+  return Astro.redirect("/404");
 }
 
 // Get the last three issues, excluding the current issue
 const newsletterIssues = await getCollection("newsletter");
 const lastIssues = newsletterIssues
-  .filter((entry) => entry.slug !== Astro.props.entry.slug)
-  .slice(-3);
+  .filter((entry) => entry.slug !== slug)
+  .slice(-3)
+  .reverse();
 
 // Render the markdown content
-const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={`${entry.data.title} – Node Weekly `} slug={entry.slug}>
-  <h1>{entry.data.title}: {entry.data.date}</h1>
+<BasePage
+  slug={entry.slug}
+  title={`${entry.data.title} - DEPT® Node Zebra`}
+  description={entry.data.tagline}
+  date={entry.data.date}
+>
+  <Header>
+    <p class="text-sm mb-2 text-light">{entry.data.title.toUpperCase()}</p>
+    <h1 class="text-3xl max-w-xl">{entry.data.tagline}</h1>
+    <div class="flex gap-12 mt-12">
+      <div>
+        <p class="text-light text-base">Read time</p>
+        <p>{entry.data.length} minutes</p>
+      </div>
+      <div>
+        <p class="text-light text-base">Date</p>
+        <p>{formatDate(entry.data.date)}</p>
+      </div>
+    </div>
+  </Header>
 
-  <Content />
+  <div class="mx-auto max-w-3xl py-8 px-4 sm:px-6 lg:px-16">
+    <Content />
+  </div>
 
-  <h2>Read more</h2>
-  <IssuesList issues={lastIssues} />
-</Layout>
+  <div class="flex flex-col md:flex-row">
+    <div class="text-white bg-onyx grow px-4 sm:px-6 lg:px-16 py-24">
+      <p class="text-5xl">Read more</p>
+    </div>
+    <div class="py-14 md:py-6 px-4 sm:px-6 lg:px-16 max-w-3xl mx-auto">
+      <IssueList>
+        {
+          lastIssues.map((issue) => (
+            <IssueCard title={issue.data.tagline} variant="sm">
+              <IssueEyebrow>
+                <span>{issue.data.title.toUpperCase()}</span>
+                <span>•</span>
+                <span>23 September 2023</span>
+              </IssueEyebrow>
+
+              <IssueTitle to={`/newsletter/${issue.slug}`}>
+                {issue.data.tagline}
+              </IssueTitle>
+            </IssueCard>
+          ))
+        }
+      </IssueList>
+    </div>
+  </div>
+</BasePage>

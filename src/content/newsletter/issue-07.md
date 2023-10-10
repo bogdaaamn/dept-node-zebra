@@ -1,7 +1,8 @@
 ---
 title: "Issue #07"
-date: "March 09"
 tagline: "The one about web longevity, reverse shell attacks, and code extraction"
+date: "2023-02-09"
+length: 2
 ---
 
 ## Node weekly

@@ -1,7 +1,8 @@
 ---
 title: "Issue #04"
-date: "February 16"
 tagline: "The one about JavaScript security, Node observability, and building GovSlack"
+date: "2023-02-16"
+length: 2
 ---
 
 ## Node weekly

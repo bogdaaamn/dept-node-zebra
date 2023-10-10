@@ -1,7 +1,8 @@
 ---
 title: "Issue #03"
-date: "February 09"
 tagline: "The one about TypeScript, compilation times, and developer experience"
+date: "2023-02-09"
+length: 2
 ---
 
 ## Node weekly
