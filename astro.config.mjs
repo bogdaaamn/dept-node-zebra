@@ -8,7 +8,7 @@ export default defineConfig({
   site: "https://dept-node-zebra.vercel.app",
   integrations: [tailwind()],
   adapter: vercel({
-    analytics: true,
+    webAnalytics: true,
   }),
-  output: "hybrid",
+  output: "server",
 });
