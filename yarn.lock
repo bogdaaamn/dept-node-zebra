@@ -270,13 +270,6 @@
     "@babel/plugin-syntax-jsx" "^7.22.5"
     "@babel/types" "^7.22.15"
 
-"@babel/runtime@^7.17.8":
-  version "7.23.1"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.1.tgz#72741dc4d413338a91dcb044a86f3c0bc402646d"
-  integrity sha512-hC2v6p8ZSI/W0HUzh3V8C5g+NwSKzKPtJwSpTjwl0o297GP9+ZLQSkdvHz46CM3LqyoXxq+5G9komY+eSqSO0g==
-  dependencies:
-    regenerator-runtime "^0.14.0"
-
 "@babel/template@^7.22.15":
   version "7.22.15"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.22.15.tgz#09576efc3830f0430f4548ef971dde1350ef2f38"
@@ -599,15 +592,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@privjs/gradients@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@privjs/gradients/-/gradients-1.0.11.tgz#44c61a7e0bcd12905a38cbe902aff92721c09872"
-  integrity sha512-89zsuOH7ZvACd4stuVh3dyQhcMNjD7dSbPk2QN02yLa/PO94Dj+SOhdYp17wzQ69pAaut4ovDy6l/FabeG49Gg==
-  dependencies:
-    chroma-js "^2.4.2"
-    polished "^4.2.2"
-    seedrandom "^3.0.5"
-
 "@rollup/pluginutils@^4.0.0":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.2.1.tgz#e6c6c3aba0744edce3fb2074922d3776c0af2a6d"
@@ -623,6 +607,18 @@
   dependencies:
     fflate "^0.7.3"
     string.prototype.codepointat "^0.2.1"
+
+"@sindresorhus/fnv1a@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@sindresorhus/fnv1a/-/fnv1a-3.0.0.tgz#e8ce2e7c7738ec8c354867d38e3bfcde622b87ca"
+  integrity sha512-M6pmbdZqAryzjZ4ELAzrdCMoMZk5lH/fshKrapfSeXdf2W+GDqZvPmfXaNTZp43//FVbSwkTPwpEMnehSyskkQ==
+
+"@sindresorhus/string-hash@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@sindresorhus/string-hash/-/string-hash-2.0.0.tgz#6e8fefe637597575418f49dcf5184365aa94c38d"
+  integrity sha512-eNmMOd5DZkiu9LxIeHdh1XvDbcpFXV4HdBqg9hlg8YNKDvE6qmHiJ+Vy+rFrzXofRYmtheNv4A3ESad8unxwwA==
+  dependencies:
+    "@sindresorhus/fnv1a" "^3.0.0"
 
 "@types/babel__core@^7.20.1":
   version "7.20.2"
@@ -748,6 +744,11 @@
   integrity sha512-7TAQFoXdwjSvebOl0oKh5QXGrI+uyTc8Here+WcR9vpLEE7wxpoK6Vuvw++dsmL+Yw8K91x76tLoWchD5pqpRg==
   dependencies:
     htmlparser2 "^8.0.0"
+
+"@types/tinycolor2@^1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@types/tinycolor2/-/tinycolor2-1.4.4.tgz#bca7469668247469087d6eba588c02e7709fcab5"
+  integrity sha512-FYK4mlLxUUajo/mblv7EUDHku20qT6ThYNsGZsTHilcHRvIkF8WXqtZO+DVTYkpHWCaAT97LueV59H/5Ve3bGA==
 
 "@types/unist@*", "@types/unist@^3.0.0":
   version "3.0.0"
@@ -1150,11 +1151,6 @@ chownr@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
-
-chroma-js@^2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/chroma-js/-/chroma-js-2.4.2.tgz#dffc214ed0c11fa8eefca2c36651d8e57cbfb2b0"
-  integrity sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==
 
 ci-info@^3.8.0:
   version "3.9.0"
@@ -3028,13 +3024,6 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-polished@^4.2.2:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-4.2.2.tgz#2529bb7c3198945373c52e34618c8fe7b1aa84d1"
-  integrity sha512-Sz2Lkdxz6F2Pgnpi9U5Ng/WdWAUZxmHrNPoVlm3aAemxoy2Qy7LGjQg4uf8qKelDAUW94F4np3iH2YPf2qefcQ==
-  dependencies:
-    "@babel/runtime" "^7.17.8"
-
 postcss-import@^15.1.0:
   version "15.1.0"
   resolved "https://registry.yarnpkg.com/postcss-import/-/postcss-import-15.1.0.tgz#41c64ed8cc0e23735a9698b3249ffdbf704adc70"
@@ -3193,11 +3182,6 @@ readdirp@~3.6.0:
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
-
-regenerator-runtime@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.14.0.tgz#5e19d68eb12d486f797e15a3c6a918f7cec5eb45"
-  integrity sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==
 
 rehype-parse@^8.0.0:
   version "8.0.5"
@@ -3426,11 +3410,6 @@ section-matter@^1.0.0:
   dependencies:
     extend-shallow "^2.0.1"
     kind-of "^6.0.0"
-
-seedrandom@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/seedrandom/-/seedrandom-3.0.5.tgz#54edc85c95222525b0c7a6f6b3543d8e0b3aa0a7"
-  integrity sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==
 
 semver@^6.0.0, semver@^6.3.1:
   version "6.3.1"
@@ -3786,6 +3765,11 @@ tiny-inflate@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tiny-inflate/-/tiny-inflate-1.0.3.tgz#122715494913a1805166aaf7c93467933eea26c4"
   integrity sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==
+
+tinycolor2@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/tinycolor2/-/tinycolor2-1.6.0.tgz#f98007460169b0263b97072c5ae92484ce02d09e"
+  integrity sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
