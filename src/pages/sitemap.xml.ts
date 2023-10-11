@@ -1,5 +1,7 @@
 import { getCollection } from "astro:content";
 
+export const prerender = false;
+
 // Inspo https://jeroenvanwissen.nl/blog/generate-a-simple-sitemapxml-on-your-astrobuild-website
 async function generateSitemapXml() {
   const allIssues = await getCollection("newsletter");

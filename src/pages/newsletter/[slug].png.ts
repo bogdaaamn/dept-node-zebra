@@ -7,6 +7,8 @@ import { getEntry } from "astro:content";
 
 import type { APIRoute } from "astro";
 
+export const prerender = false;
+
 const FONT_URL_BOLD = "https://fonts.cdnfonts.com/s/29652/MaisonNeueBold.woff";
 const FONT_URL_THIN = "https://fonts.cdnfonts.com/s/29652/MaisonNeueThin.woff";
 

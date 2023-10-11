@@ -9,26 +9,29 @@ import IssueTitle from "~/components/IssueList/IssueTitle.astro";
 
 import formatDate from "~/utils/formatDate";
 
-import { getCollection, getEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
-// Get slug from path
-const { slug } = Astro.params;
-
-if (!slug) {
-  throw new Error("Slug is required");
+export interface Props {
+  entry: CollectionEntry<"newsletter">;
 }
 
-// Get entry from collection
-const entry = await getEntry("newsletter", slug);
+// Generate paths for all the issues in the newsletter collection
+export async function getStaticPaths() {
+  const newsletterIssues = await getCollection("newsletter");
 
-if (!entry) {
-  return Astro.redirect("/404");
+  return newsletterIssues.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
+
+// Get the static entry for the current issue
+const { entry } = Astro.props;
 
 // Get the last three issues, excluding the current issue
 const newsletterIssues = await getCollection("newsletter");
 const lastIssues = newsletterIssues
-  .filter((entry) => entry.slug !== slug)
+  .filter((issue) => issue.slug !== entry.slug)
   .slice(-3)
   .reverse();
 
