@@ -15,15 +15,18 @@ const {
   date = "2023-03-23",
 } = Astro.props;
 
-const image =
-  slug === "index" ? `${Astro.url}newsletter/index.png` : `${Astro.url}.png`;
+const url = Astro.request.url.endsWith("/")
+  ? Astro.request.url.slice(0, -1)
+  : Astro.request.url;
+
+const image = slug === "index" ? `${url}/newsletter/index.png` : `${url}.png`;
 
 const schema = JSON.stringify({
   "@context": "http://schema.org/",
   "@type": "Article",
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": Astro.url,
+    "@id": url,
   },
   author: {
     "@type": "Person",
@@ -63,7 +66,7 @@ const schema = JSON.stringify({
     <meta name="description" content={description} />
 
     <!-- Facebook Meta Tags -->
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={url} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -71,7 +74,7 @@ const schema = JSON.stringify({
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:url" content={url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
