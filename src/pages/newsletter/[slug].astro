@@ -81,7 +81,7 @@ const { Content } = await entry.render();
               <IssueEyebrow>
                 <span>{issue.data.title.toUpperCase()}</span>
                 <span>•</span>
-                <span>23 September 2023</span>
+                <span>{formatDate(issue.data.date)}</span>
               </IssueEyebrow>
 
               <IssueTitle to={`/newsletter/${issue.slug}`}>
