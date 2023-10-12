@@ -1,7 +1,7 @@
 ---
 title: 'Issue #07'
 tagline: 'The one about web longevity, reverse shell attacks, and code extraction'
-date: 2023-02-09T00:00:00.000Z
+date: 2023-03-08T23:00:00.000Z
 length: 2
 ---
 
