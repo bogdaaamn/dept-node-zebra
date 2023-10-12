@@ -29,11 +29,16 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 
 // Get the last three issues, excluding the current issue
-const newsletterIssues = await getCollection("newsletter");
-const lastIssues = newsletterIssues
+const allIssues = await getCollection("newsletter");
+const issues = allIssues.sort((a, b) => {
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
+
+  return dateB.getTime() - dateA.getTime();
+});
+const lastIssues = issues
   .filter((issue) => issue.slug !== entry.slug)
-  .slice(-3)
-  .reverse();
+  .slice(0, 3);
 
 // Render the markdown content
 const { Content } = await entry.render();
