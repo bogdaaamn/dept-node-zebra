@@ -8,8 +8,12 @@ export default defineConfig({
   site: "https://dept-node-zebra.vercel.app",
   integrations: [tailwind()],
   adapter: vercel({
-    webAnalytics: true,
-    speedInsights: true,
+    webAnalytics: {
+      enabled: true,
+    },
+    speedInsights: {
+      enabled: true,
+    },
   }),
   output: "hybrid",
 });
