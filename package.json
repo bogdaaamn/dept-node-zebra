@@ -7,8 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "tina:dev": "tinacms dev -c 'astro dev'"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/rss": "^3.0.0",
@@ -28,8 +27,6 @@
     "@types/markdown-it": "^13.0.2",
     "@types/node": "^20.8.3",
     "@types/sanitize-html": "^2.9.2",
-    "@types/tinycolor2": "^1.4.4",
-    "@tinacms/cli": "^1.5.30",
-    "tinacms": "^1.5.21"
+    "@types/tinycolor2": "^1.4.4"
   }
 }
