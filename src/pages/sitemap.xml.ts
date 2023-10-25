@@ -20,8 +20,8 @@ async function generateSitemapXml() {
     <urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <url>
         <loc>${site}</loc>
-        <lastmod>${issues[0].data.date}</lastmod>
-        <priority>0.80</priority>
+        <lastmod>${issues[0].data.date.toISOString()}</lastmod>
+        <priority>1.00</priority>
     </url>
     ${issues
       .map((issue) => {
@@ -29,8 +29,8 @@ async function generateSitemapXml() {
         return `
             <url>
                 <loc>${loc}</loc>
-                <lastmod>${issue.data.date}</lastmod>
-                <priority>1.00</priority>
+                <lastmod>${issue.data.date.toISOString()}</lastmod>
+                <priority>0.80</priority>
             </url>
         `.trim();
       })
