@@ -18,7 +18,8 @@ length: 2
 ## Tools of the week
 
 * [WinterJS](https://zbr.fyi/vyIlR1b): Performant JavaScript Service Workers server
-* [orbital](https://zbr.fyi/T2kJl1R): BFF's, API Composition and ETL pipelines that adapt as your specs change
+* [React95](https://zbr.fyi/T7JbITV): Windows 95 UI components for your modern React apps
 * [shoelace](https://zbr.fyi/6auux1n): Collection of UI components built on Web standards
+* [orbital](https://zbr.fyi/T2kJl1R): BFF's, API Composition and ETL pipelines that adapt as your specs change
 * [inshellisense](https://zbr.fyi/TRoPJQt): IDE style terminal auto complete
 * [Knock](https://zbr.fyi/yeigMXL): Notification system
