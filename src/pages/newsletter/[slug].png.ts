@@ -54,7 +54,9 @@ export const GET: APIRoute = async function ({ params }) {
   // Generate the SVG on the fly
   const markup = getSatoriMarkup({
     title: entry?.data
-      ? `Node Zebra Newsletter ${entry.data.title.replace("Issue", "")}`
+      ? `Node Zebra Newsletter ${entry.data.title
+          .replace("Issue", "")
+          .replace("Node Zebra", "")}`
       : "Node Zebra Newsletter",
     description: entry?.data
       ? entry.data.tagline
