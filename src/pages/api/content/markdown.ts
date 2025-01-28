@@ -75,11 +75,11 @@ length: ${data.issue_length}
 
 ## Weekly bites
 
-${articles.map((article) => `* [${article.title}](${article.short_url})\n  ${article.description}`).join("\n")}
+${articles.map((article) => `* [${article.title}](${article.short_url}): ${article.description}`).join("\n")}
 
 ## Tools of the week
 
-${tools.map((tool) => `* [${tool.title}](${tool.short_url})\n  ${tool.description}`).join("\n")}
+${tools.map((tool) => `* [${tool.title}](${tool.short_url}): ${tool.description}`).join("\n")}
 `;
 
   return Buffer.from(markdown).toString("base64");
