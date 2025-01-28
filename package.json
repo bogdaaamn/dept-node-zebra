@@ -10,11 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/rss": "^3.0.0",
-    "@astrojs/tailwind": "^5.0.2",
-    "@astrojs/vercel": "^5.0.2",
+    "@astrojs/rss": "4.0.11",
+    "@astrojs/tailwind": "5.1.5",
+    "@astrojs/vercel": "8.0.4",
     "@sindresorhus/string-hash": "^2.0.0",
-    "astro": "^3.2.4",
+    "astro": "5.1.10",
     "markdown-it": "^13.0.2",
     "sanitize-html": "^2.11.0",
     "satori": "^0.10.9",
