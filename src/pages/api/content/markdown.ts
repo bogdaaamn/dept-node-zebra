@@ -97,7 +97,12 @@ ${articles.map((article) => `• <${article.short_url}|*${article.title}*>: ${ar
 *TOOLS OF THE WEEK*
 ${tools.map((tool) => `• <${tool.short_url}|*${tool.title}*>: ${tool.description}`).join("\n")}
 
-${weekly && `<${weekly.short_url}|*${formatUrlWithoutProtocol(weekly.short_url)}*>._ :globe2:`}`;
+${
+  weekly &&
+  `_Read the newsletter in the browser at <${weekly.short_url}|*${formatUrlWithoutProtocol(
+    weekly.short_url
+  )}*>._ :globe2:`
+}`;
 
   return Buffer.from(message).toString("base64");
 }
