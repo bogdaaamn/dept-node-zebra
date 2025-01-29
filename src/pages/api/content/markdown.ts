@@ -11,9 +11,9 @@ const bodySchema = z.object({
     .array(
       z.object({
         date: z.string().datetime().min(1),
-        type: z.enum(["Article", "Tool"]),
+        type: z.enum(["Article", "Tool", "Weekly"]),
         title: z.string().min(1),
-        description: z.string().min(1),
+        description: z.string().nullable(),
         url: z.string().url().min(1),
         short_url: z.string().url().min(1),
       })
