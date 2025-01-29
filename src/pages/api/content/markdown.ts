@@ -29,11 +29,12 @@ export async function POST({ request }: { request: Request }) {
       const validatedData = bodySchema.parse(body);
 
       const markdown = generateEncodedMarkdownFile(validatedData);
+      const slackMessage = generateEncodedSlackMessage(validatedData);
 
-      return new Response(markdown, {
+      return new Response(JSON.stringify({ encodedMarkdownFile: markdown, encodedSlackMessage: slackMessage }), {
         status: 200,
         headers: {
-          "Content-Type": "text/plain",
+          "Content-Type": "application/json",
         },
       });
     } catch (error) {
@@ -62,7 +63,6 @@ export async function POST({ request }: { request: Request }) {
 }
 
 function generateEncodedMarkdownFile(data: Zod.infer<typeof bodySchema>): string {
-  // Divide entries into Articles and Tools
   const articles = data.content.filter((item) => item.type === "Article");
   const tools = data.content.filter((item) => item.type === "Tool");
 
@@ -84,4 +84,20 @@ ${tools.map((tool) => `* [${tool.title}](${tool.short_url}): ${tool.description}
 
   return Buffer.from(markdown).toString("base64");
   // return markdown;
+}
+
+function generateEncodedSlackMessage(data: Zod.infer<typeof bodySchema>): string {
+  const articles = data.content.filter((item) => item.type === "Article");
+  const tools = data.content.filter((item) => item.type === "Tool");
+  const weekly = data.content.find((item) => item.type === "Weekly");
+
+  const message = `*${data.issue_title.toUpperCase()} <!here>*
+${articles.map((article) => `• <${article.short_url}|*${article.title}*>: ${article.description}`).join("\n\n")}
+
+*TOOLS OF THE WEEK*
+${tools.map((tool) => `• <${tool.short_url}|*${tool.title}*>: ${tool.description}`).join("\n")}
+
+${weekly && `_${weekly.description} <${weekly.short_url}|*${weekly.title}*>._ :globe2:`}`;
+
+  return Buffer.from(message).toString("base64");
 }
