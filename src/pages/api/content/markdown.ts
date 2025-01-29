@@ -97,7 +97,11 @@ ${articles.map((article) => `• <${article.short_url}|*${article.title}*>: ${ar
 *TOOLS OF THE WEEK*
 ${tools.map((tool) => `• <${tool.short_url}|*${tool.title}*>: ${tool.description}`).join("\n")}
 
-${weekly && `_${weekly.description} <${weekly.short_url}|*${weekly.title}*>._ :globe2:`}`;
+${weekly && `<${weekly.short_url}|*${formatUrlWithoutProtocol(weekly.short_url)}*>._ :globe2:`}`;
 
   return Buffer.from(message).toString("base64");
+}
+
+function formatUrlWithoutProtocol(url: string): string {
+  return url.replace(/^https?:\/\//, "");
 }
