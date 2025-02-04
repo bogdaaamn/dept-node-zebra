@@ -1,9 +1,15 @@
 ---
 title: "Issue #18"
-date: 2025-02-04
-tagline: "The one about accessibility, no code, and automation "
+date: 2025-02-05
+tagline: "The one about accessibility, no code, and automation"
 length: 3
 ---
+
+We are back, and Node Zebra is turning 18. We didn't buy it a car, but we built it a robot (rocket kind of). 
+
+After one full year of self reflection, blood, and many tries, we automated out curation process. There is no AI involved so we might disappoint many, but we will write about it soon (yes I took one marketing class where I learnt I should start with a cliffhanger). It's not the biggest feat of engineering, but it's a makeover we have been looking for a long time. This will allow us to focus more on the content writing and less on the technical stuff of how to publish this. More about that later.
+
+The format stays the same. We are still open to suggestions, feedback, and collaborations. Anyhoo, 
 
 ## Weekly bites
 
