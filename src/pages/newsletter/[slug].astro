@@ -36,9 +36,8 @@ const issues = allIssues.sort((a, b) => {
 
   return dateB.getTime() - dateA.getTime();
 });
-const lastIssues = issues
-  .filter((issue) => issue.slug !== entry.slug)
-  .slice(0, 3);
+
+const lastIssues = issues.filter((issue) => issue.slug !== entry.slug).slice(0, 3);
 
 // Render the markdown content
 const { Content } = await entry.render();
@@ -84,9 +83,7 @@ const { Content } = await entry.render();
                 <span>{formatDate(issue.data.date)}</span>
               </IssueEyebrow>
 
-              <IssueTitle to={`/newsletter/${issue.slug}`}>
-                {issue.data.tagline}
-              </IssueTitle>
+              <IssueTitle to={`/newsletter/${issue.slug}`}>{issue.data.tagline}</IssueTitle>
             </IssueCard>
           ))
         }

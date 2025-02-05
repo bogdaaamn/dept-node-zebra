@@ -12,27 +12,13 @@ export const prerender = false;
 const FONT_URL_BOLD = "https://fonts.cdnfonts.com/s/29652/MaisonNeueBold.woff";
 const FONT_URL_THIN = "https://fonts.cdnfonts.com/s/29652/MaisonNeueThin.woff";
 
-function getSatoriMarkup({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
+function getSatoriMarkup({ title, description }: { title: string; description: string }) {
   return html` <div
     style="height: 100%; width: 100%; padding: 7%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: rgb(255, 255, 255); background-image: radial-gradient(circle at 10px 10px, lightgray 3%, transparent 0%), radial-gradient(circle at 30px 30px, lightgray 3%, transparent 0%); background-size: 40px 40px;"
   >
     <div style="display: flex; flex-direction: column;">
-      <div
-        style="font-size: 22px; letter-spacing: 1px; font-weight: 700; text-transform: uppercase;"
-      >
-        ${title}
-      </div>
-      <div
-        style="margin-top: 20px; font-size: 38px; font-weight: 200; max-width: 700px;"
-      >
-        ${description}
-      </div>
+      <div style="font-size: 22px; letter-spacing: 1px; font-weight: 700; text-transform: uppercase;">${title}</div>
+      <div style="margin-top: 20px; font-size: 38px; font-weight: 200; max-width: 700px;">${description}</div>
     </div>
   </div>`;
 }
@@ -54,13 +40,9 @@ export const GET: APIRoute = async function ({ params }) {
   // Generate the SVG on the fly
   const markup = getSatoriMarkup({
     title: entry?.data
-      ? `Node Zebra Newsletter ${entry.data.title
-          .replace("Issue", "")
-          .replace("Node Zebra", "")}`
+      ? `Node Zebra Newsletter ${entry.data.title.replace("Issue", "").replace("Node Zebra", "")}`
       : "Node Zebra Newsletter",
-    description: entry?.data
-      ? entry.data.tagline
-      : "Our friendly newsletter with edgy tech news, articles, and tools",
+    description: entry?.data ? entry.data.tagline : "Our friendly newsletter with edgy tech news, articles, and tools",
   });
 
   // Generate the SVG

@@ -22,18 +22,15 @@ export async function GET() {
   const mdParser = new MarkdownIt();
 
   return rss({
-    title: "DEPT® Node Zebra Newsletter",
-    description:
-      "Node Weekly is our friendly bi-weekly newsletter with edgy tech articles and tools",
+    title: "Node Zebra Newsletter – DEPT®",
+    description: "Node Zebra is our friendly bi-weekly newsletter with tech articles and tools",
     site: site,
     items: issues.map((issue) => ({
       title: issue.data.title,
       pubDate: new Date(issue.data.date),
       description: issue.data.tagline,
       link: `/newsletter/${issue.slug}/`,
-      content: sanitizeHtml(
-        mdParser.render(`# DEPT® Node Zebra Newsletter ${issue.body}`)
-      ),
+      content: sanitizeHtml(mdParser.render(`# DEPT® Node Zebra Newsletter ${issue.body}`)),
     })),
   });
 }
