@@ -5,7 +5,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://dept-node-zebra.vercel.app",
+  site: "https://web.zbr.fyi",
   integrations: [tailwind()],
   adapter: vercel({
     webAnalytics: {
