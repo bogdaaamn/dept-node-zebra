@@ -19,7 +19,7 @@ const {
 
 const url = Astro.request.url.endsWith("/") ? Astro.request.url.slice(0, -1) : Astro.request.url;
 
-const canonicalUrl = slug === "index" ? Astro.site.origin : new URL(Astro.url.pathname, Astro.site);
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
 const imageUrl = slug === "index" ? `${url}/newsletter/index.png` : `${url}.png`;
 ---
