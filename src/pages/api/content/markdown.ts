@@ -3,10 +3,10 @@ import { z } from "zod";
 export const prerender = false;
 
 const bodySchema = z.object({
-  issue_title: z.string().min(1),
-  issue_date: z.string().min(1),
-  issue_tagline: z.string().min(1),
-  issue_length: z.string().min(1),
+  issue_tag: z
+    .string()
+    .regex(/^issue-\d+$/, { message: "Issue tag must be in the format issue-<number>" })
+    .min(1),
   content: z
     .array(
       z.object({
@@ -66,11 +66,19 @@ function generateEncodedMarkdownFile(data: Zod.infer<typeof bodySchema>): string
   const articles = data.content.filter((item) => item.type === "Article");
   const tools = data.content.filter((item) => item.type === "Tool");
 
+  // We can extract the issue number from the tag here, since we validated the tag format in the schema
+  const issue_tag = data.issue_tag.replace(/^issue-/, "");
+
+  const issue_title = `Issue #${issue_tag}`;
+  const issue_date = new Date().toISOString();
+  const issue_tagline = "The one about xxx";
+  const issue_length = 3;
+
   const markdown = `---
-title: "${data.issue_title}"
-date: ${data.issue_date}
-tagline: "${data.issue_tagline}"
-length: ${data.issue_length}
+title: "${issue_title}"
+date: ${issue_date}
+tagline: "${issue_tagline}"
+length: ${issue_length}
 ---
 
 ## Weekly bites
@@ -91,7 +99,11 @@ function generateEncodedSlackMessage(data: Zod.infer<typeof bodySchema>): string
   const tools = data.content.filter((item) => item.type === "Tool");
   const weekly = data.content.find((item) => item.type === "Weekly");
 
-  const message = `*${data.issue_title.toUpperCase()} <!here>*
+  // We can extract the issue number from the tag here, since we validated the tag format in the schema
+  const issue_tag = data.issue_tag.replace(/^issue-/, "");
+  const issue_title = `Weekly #${issue_tag}`;
+
+  const message = `*${issue_title.toUpperCase()} <!here>*
 ${articles.map((article) => `• <${article.short_url}|*${article.title}*>: ${article.description}`).join("\n\n")}
 
 *TOOLS OF THE WEEK*
