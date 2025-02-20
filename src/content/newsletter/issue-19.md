@@ -1,7 +1,7 @@
 ---
 title: "Issue #19"
 date: 2025-02-20T07:25:00.636Z
-tagline: "The one about xxx"
+tagline: "The one about time, code signing, and imperfect systems and developers"
 length: 3
 ---
 
