@@ -1,3 +1,32 @@
-<div class="flex flex-col gap-16">
+---
+export interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="issue-list">
+  {title && <p class="issue-list-title">{title}</p>}
   <slot />
 </div>
+
+<style>
+  .issue-list {
+    grid-column: 2 / span 10;
+    margin-bottom: 6rem;
+  }
+
+  @media (max-width: 768px) {
+    .issue-list {
+      grid-column: 1 / span 12;
+    }
+  }
+
+  .issue-list-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-gray-light);
+  }
+</style>

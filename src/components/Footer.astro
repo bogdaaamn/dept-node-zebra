@@ -1,0 +1,114 @@
+---
+import { getCollection } from "astro:content";
+
+import DeptLogo from "~/static/DeptLogo.astro";
+
+const allIssues = await getCollection("newsletter");
+
+const lastIssues = allIssues
+  .sort((a, b) => {
+    const dateA = new Date(a.data.date);
+    const dateB = new Date(b.data.date);
+
+    return dateB.getTime() - dateA.getTime();
+  })
+  .slice(0, 5);
+---
+
+<div class="footer">
+  <div class="footer-logo-wrap">
+    <div class="footer-logo">
+      <DeptLogo />
+    </div>
+  </div>
+  <div class="footer-links">
+    {lastIssues.map((issue) => <a href={`/newsletter/${issue.id}`}>{issue.data.title}</a>)}
+  </div>
+  <div class="footer-links">
+    <a href="https://www.deptagency.com/en-nl/about-us/" target="_blank" rel="noopener noreferrer">About DEPT®</a>
+    <a href="https://www.deptagency.com/en-nl/careers/" target="_blank" rel="noopener noreferrer">Careers</a>
+    <a href="https://engineering.deptagency.com/" target="_blank" rel="noopener noreferrer">Engineering</a>
+    <a href="/rss.xml">RSS Feed</a>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/deptagency/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://www.linkedin.com/deptagency/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://github.com/deptagency" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a
+      href="https://github.com/bogdaaamn/dept-node-zebra"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-edit-link">Edit this page</a
+    >
+  </div>
+</div>
+
+<style>
+  .footer {
+    display: flex;
+    gap: 2rem;
+    align-items: top;
+    font-size: 0.65rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      font-size: 0.75rem;
+      gap: 1rem;
+    }
+  }
+
+  .footer-logo {
+    width: 250px;
+  }
+
+  @media (max-width: 768px) {
+    .footer-logo {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .footer-logo-wrap {
+    flex-grow: 1;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-left: 1px solid var(--color-gray-light);
+    gap: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer-links {
+      border-left: none;
+      padding: 0;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-gray-light);
+    }
+  }
+
+  .footer-links:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer-links:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .footer-links > a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+</style>
