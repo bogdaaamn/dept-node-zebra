@@ -1,7 +1,11 @@
 ---
-import Navigation from "~/components/Navigation.astro";
+import "~/styles/global.css";
+import "~/styles/reset.css";
 
-import { generateSchema } from "~/utils/generateSchema";
+import Navigation from "~/components/Navigation.astro";
+import Footer from "~/components/Footer.astro";
+import generateSchema from "~/utils/generateSchema";
+import formatDate from "~/utils/formatDate";
 
 export interface Props {
   slug: string;
@@ -10,12 +14,7 @@ export interface Props {
   date: Date;
 }
 
-const {
-  slug = "index",
-  title = "Node Zebra Newsletter – DEPT®",
-  description = "Node Zebra is our friendly bi-weekly newsletter featuring the latest tech articles and tools",
-  date = "2025-02-05",
-} = Astro.props;
+const { slug, title, description, date } = Astro.props;
 
 const url = Astro.request.url.endsWith("/") ? Astro.request.url.slice(0, -1) : Astro.request.url;
 
@@ -24,6 +23,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const imageUrl = slug === "index" ? `${url}/newsletter/index.png` : `${url}.png`;
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -55,55 +55,39 @@ const imageUrl = slug === "index" ? `${url}/newsletter/index.png` : `${url}.png`
     <meta name="twitter:image" content={imageUrl} />
 
     <!-- Structured data -->
-    <script type="application/ld+json" set:html={await generateSchema(slug, url, description, imageUrl, date)} />
+    <script
+      type="application/ld+json"
+      set:html={await generateSchema(slug, url, description, imageUrl, formatDate(date))}
+    />
   </head>
-
   <body>
-    <div class="bg-onyx px-4 sm:px-6 lg:px-16">
-      <Navigation />
-    </div>
-    <slot />
+    {slug !== "index" && <Navigation />}
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
-
-  <style is:global>
-    @font-face {
-      font-family: "MaisonNeueMG";
-      src: url("/fonts/MaisonNeueMG-Light.woff2") format("woff2");
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "MaisonNeueMG";
-      src: url("/fonts/MaisonNeueExtended-Demi.woff2") format("woff2");
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "MaisonNeueMG";
-      src: url("/fonts/MaisonNeueMG-Book.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    p {
-      @apply text-lg mb-4;
-    }
-
-    h2 {
-      @apply text-3xl font-bold mt-8 mb-3;
-    }
-
-    ul {
-      @apply list-disc list-inside space-y-2 mb-4 text-lg;
-    }
-
-    a {
-      @apply font-bold text-blue-900;
-    }
-  </style>
 </html>
+
+<style>
+  html {
+    font-family: var(--dept-font-family);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    font-synthesis: none;
+    font-size: max(1.25rem, min(0.376vw + 1.162rem, 1.5rem));
+    line-height: max(1.75rem, min(0.368vw + 1.664rem, 1.995rem));
+  }
+
+  body {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  main {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    column-gap: 1.25rem;
+    display: grid;
+  }
+</style>

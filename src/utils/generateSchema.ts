@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 
-export async function generateSchema(slug: string, url: string, description: string, image: string, date: string) {
+export default async function (slug: string, url: string, description: string, image: string, date: string) {
   if (slug === "index") {
     const allIssues = await getCollection("newsletter");
 
@@ -59,7 +59,7 @@ export async function generateSchema(slug: string, url: string, description: str
       hasPart: latestIssues.map((issue) => ({
         "@type": "Article",
         headline: issue.data.tagline,
-        url: `${url}/${issue.slug}`,
+        url: `${url}/${issue.id}`,
         datePublished: issue.data.date,
       })),
     });

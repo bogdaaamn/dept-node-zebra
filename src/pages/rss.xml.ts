@@ -27,7 +27,7 @@ export async function GET() {
       title: issue.data.title,
       pubDate: new Date(issue.data.date),
       description: issue.data.tagline,
-      link: `/newsletter/${issue.slug}/`,
+      link: `/newsletter/${issue.id}/`,
       content: sanitizeHtml(mdParser.render(`# DEPT® Node Zebra Newsletter ${issue.body}`)),
     })),
   });

@@ -1,0 +1,24 @@
+<div class="issue-arrow">
+  <p><slot /></p>
+</div>
+
+<style is:global>
+  .issue-arrow {
+    color: black;
+    display: none;
+  }
+
+  .issue-card:hover .issue-arrow {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .issue-arrow {
+      display: none;
+    }
+
+    .issue-card:hover .issue-arrow {
+      display: none;
+    }
+  }
+</style>

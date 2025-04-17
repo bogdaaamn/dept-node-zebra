@@ -4,10 +4,11 @@ import Header from "~/components/Header.astro";
 
 import IssueList from "~/components/IssueList/IssueList.astro";
 import IssueCard from "~/components/IssueList/IssueCard.astro";
-import IssueEyebrow from "~/components/IssueList/IssueEyebrow.astro";
 import IssueTitle from "~/components/IssueList/IssueTitle.astro";
+import IssueNumber from "~/components/IssueList/IssueNumber.astro";
+import IssueArrow from "~/components/IssueList/IssueArrow.astro";
 
-import formatDate from "~/utils/formatDate";
+import formatIssueNumber from "~/utils/formatIssueNumber";
 
 import { getCollection } from "astro:content";
 
@@ -25,28 +26,22 @@ const issues = allIssues.sort((a, b) => {
   slug="index"
   title="Node Zebra Newsletter – DEPT®"
   description="Node Zebra is our friendly bi-weekly newsletter with tech articles and tools"
-  date="2025-02-05"
+  date={new Date()}
 >
   <Header>
-    <h1 class="uppercase text-5xl font-semibold mb-2 text-center">Node Zebra</h1>
-    <p class="text-center">Friendly newsletter with edgy tech articles and tools</p>
+    <h1>Node Zebra</h1>
+    <p>Our friendly bi-weekly newsletter featuring the latest tech articles and tools</p>
   </Header>
 
-  <div class="py-16 px-4 sm:px-6 lg:px-16 max-w-3xl mx-auto">
-    <IssueList>
-      {
-        issues.map((issue) => (
-          <IssueCard title={issue.data.tagline}>
-            <IssueEyebrow>
-              <span>{issue.data.title.toUpperCase()}</span>
-              <span>•</span>
-              <span>{formatDate(issue.data.date)}</span>
-            </IssueEyebrow>
-
-            <IssueTitle to={`/newsletter/${issue.slug}`}>{issue.data.tagline}</IssueTitle>
-          </IssueCard>
-        ))
-      }
-    </IssueList>
-  </div>
+  <IssueList title="Latest issues">
+    {
+      issues.map((issue) => (
+        <IssueCard href={`/newsletter/${issue.id}`}>
+          <IssueNumber>{formatIssueNumber(issue.id)}</IssueNumber>
+          <IssueTitle>{issue.data.tagline}</IssueTitle>
+          <IssueArrow>→</IssueArrow>
+        </IssueCard>
+      ))
+    }
+  </IssueList>
 </BasePage>

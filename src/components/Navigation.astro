@@ -1,73 +1,20 @@
----
-import DeptLogo from "~/static/DeptLogo.astro";
-import Dots from "~/static/Dots.astro";
----
-
-<nav class="flex justify-between items-center py-4 sm:py-6 lg:py-14">
-  <a class="text-white" href="/"><DeptLogo /></a>
-
-  <div id="nav" class="hidden bg-onyx sm:flex space-x-12 uppercase">
-    <a class="text-white font-light" href="/">Node Zebra</a>
-    <a class="text-white font-light" href="/rss.xml">RSS Feed</a>
-    <a
-      class="text-white font-light"
-      rel="noopener"
-      rel="nofollow"
-      target="_blank"
-      href="https://engineering.deptagency.com/"
-    >
-      Engineering
-    </a>
-    <a
-      class="text-white font-light"
-      rel="noopener"
-      rel="nofollow"
-      target="_blank"
-      href="https://engineering.deptagency.com/careers"
-    >
-      Careers
-    </a>
-  </div>
-
-  <div class="sm:hidden z-50">
-    <button id="nav-button" type="button" aria-label="Open navigation">
-      <span class="text-white"><Dots /></span>
-    </button>
-  </div>
+<nav>
+  <a href="/">Node Zebra</a>
 </nav>
 
-<script>
-  // I don't like this
-  const modalList = [
-    "fixed",
-    "inset-0",
-    "h-screen",
-    "flex",
-    "flex-col",
-    "space-x-0",
-    "space-y-4",
-    "items-center",
-    "justify-center",
-  ];
+<style>
+  nav {
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-size: 1rem;
+  }
 
-  const navButton = document.getElementById("nav-button") as HTMLButtonElement;
-  const navModal = document.getElementById("nav") as HTMLDivElement;
-
-  // I don't love this, but here we go https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
-  navButton.addEventListener("click", () => {
-    if (navModal.classList.contains("hidden")) {
-      navModal.classList.remove("hidden");
-      navModal.classList.add(...modalList);
-
-      navButton.setAttribute("aria-label", "Close navigation");
-
-      // Focus on the first link of navigation
-      (navModal.children[0] as HTMLAnchorElement).focus();
-    } else {
-      navModal.classList.add("hidden");
-      navModal.classList.remove(...modalList);
-
-      navButton.setAttribute("aria-label", "Open navigation");
-    }
-  });
-</script>
+  nav a {
+    color: inherit;
+    text-decoration: none;
+  }
+</style>

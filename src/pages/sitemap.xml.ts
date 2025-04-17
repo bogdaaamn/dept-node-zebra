@@ -23,7 +23,7 @@ async function generateSitemapXml() {
     </url>
     ${issues
       .map((issue) => {
-        const loc = new URL(`/${issue.collection}/${issue.slug}`, site).href;
+        const loc = new URL(`/${issue.collection}/${issue.id}`, site).href;
         return `
             <url>
                 <loc>${loc}</loc>

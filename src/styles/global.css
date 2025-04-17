@@ -1,0 +1,48 @@
+:root {
+  --color-onyx: #121212;
+  --color-gray-dark: #67727b;
+  --color-gray-light: #818181;
+  --color-blue-link: #1e3a8a;
+  --dept-font-family: "Helvetica Neue", system-ui, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Helvetica Neue;
+  font-weight: 300;
+  font-style: normal;
+  src: url(/HelveticaNeue55.woff2) format("woff2");
+  font-display: block;
+}
+
+@font-face {
+  font-family: Helvetica Neue;
+  font-weight: 400;
+  font-style: normal;
+  src: url(/HelveticaNeue55-Roman.woff) format("woff");
+  font-display: block;
+}
+
+@font-face {
+  font-family: Helvetica Neue;
+  font-weight: 700;
+  font-style: normal;
+  src: url(/HelveticaNeue75-Bold.woff2) format("woff2");
+  font-display: block;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-blue-link);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

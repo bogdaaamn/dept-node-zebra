@@ -1,0 +1,16 @@
+<div class="issue-number">
+  <p><slot /></p>
+</div>
+
+<style is:global>
+  .issue-number {
+    color: var(--color-gray-light);
+    font-family: serif;
+    font-style: italic;
+    font-size: 1.5rem;
+  }
+
+  .issue-card:hover .issue-number {
+    color: black;
+  }
+</style>
